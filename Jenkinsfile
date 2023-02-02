@@ -5,8 +5,6 @@ pipeline {
       retries 2
     }
   }
-
-  tools {nodejs "NodeJS"}
   
   stages {
     stage('Build') {
