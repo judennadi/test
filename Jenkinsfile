@@ -1,7 +1,7 @@
 pipeline {
   agent {
     label {
-      label 'docker-agent'
+      label 'docker-nodejs-agent'
       retries 2
     }
   }
