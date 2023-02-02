@@ -5,9 +5,13 @@ pipeline {
       retries 2
     }
   }
+
   triggers {
     pollSCM '*/5 * * * *'
   }
+
+  tools {nodejs "NodeJS"}
+  
   stages {
     stage('Build') {
       steps {
@@ -17,6 +21,7 @@ pipeline {
           '''
       }
     }
+
     stage('Test') {
       steps {
           echo 'Testing...'
@@ -25,6 +30,7 @@ pipeline {
           '''
       }
     }
+
     stage('Deploy') {
       steps {
           echo 'Deploying...'
