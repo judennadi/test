@@ -21,4 +21,4 @@ test:
 
 deploy:
   stage: deploy
-  script: echo "Deploying.."
+  script: echo "Deploying..."
