@@ -15,7 +15,9 @@ cache:
 
 test:
   stage: test
-  script: npm run test
+  script:
+    - npm install 
+    - npm run test
 
 deploy:
   stage: deploy
