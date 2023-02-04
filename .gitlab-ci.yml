@@ -5,16 +5,13 @@ default:
     - linux-local
 
 stages:
-  - build
   - test
   - deploy
 
-build:
-  stage: build
-  script: npm install
-  artifacts:
-    paths:
-      - node_modules
+cache:
+  paths:
+    - node_modules/
+
 
 test:
   stage: test
@@ -23,4 +20,3 @@ test:
 deploy:
   stage: deploy
   script: echo "Deploying.."
-  dependencies: []
