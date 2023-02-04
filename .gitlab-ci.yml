@@ -12,9 +12,6 @@ stages:
 build:
   stage: build
   script: npm install
-  artifacts:
-    paths:
-      - node_modules
 
 test:
   stage: test
@@ -23,3 +20,4 @@ test:
 deploy:
   stage: deploy
   script: echo "Deploying..."
+  dependencies: []
