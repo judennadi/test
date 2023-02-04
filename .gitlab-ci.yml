@@ -4,5 +4,19 @@ default:
   tags:
     - linux-local
 
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script: npm install
+
 test:
-  script: echo "Hello world!"
+  stage: test
+  script: npm run test
+
+deploy:
+  stage: deploy
+  script: echo "Deploying..."
