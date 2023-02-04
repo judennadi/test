@@ -20,4 +20,3 @@ test:
 deploy:
   stage: deploy
   script: echo "Deploying..."
-  dependencies: []
