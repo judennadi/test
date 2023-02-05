@@ -36,5 +36,5 @@ jobs:
           name: dockerfile
       - run: cat test.txt
       - run: aws --version
-      - run: aws s3 cp bin s3://$AWS_S3_BUCKET/test.txt
+      - run: aws s3 cp bin s3://${{secrets.AWS_S3_BUCKET}}/test.txt
     
