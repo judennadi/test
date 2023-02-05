@@ -47,6 +47,7 @@ jobs:
     - name: restore cache
       uses: actions/cache@v3
       with:
+        path: node_modules
         key: nodemo
         restore-keys: nodemo
     - uses: actions/download-artifact@v3
