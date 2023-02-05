@@ -10,20 +10,31 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-    - name: Install NPM Dependencies
-      run: npm ci
-    - name: Run Unit Tests
-      run: npm test
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install NPM Dependencies
+        run: npm ci
+      - name: Run Unit Tests
+        run: npm test
+      - run: echo "Hello world this is it" > test.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dockerfile
+          path: test.txt
+ 
 
   deploy-to-S3:
     needs: build-and-test
     runs-on: ubuntu-latest
     container: amazon/aws-cli
     steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: dockerfile
+      - run: cat test.txt
       - run: aws --version
+      - run: aws s3 cp bin s3://$AWS_S3_BUCKET/test.txt
     
