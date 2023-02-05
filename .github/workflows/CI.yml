@@ -32,15 +32,15 @@ jobs:
     runs-on: ubuntu-latest
     container: amazon/aws-cli
     env:
-      AWS_ACCESS_KEY_ID: ${{ vars.AWS_ACCESS_KEY_ID }}
-      AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/download-artifact@v3
         with:
           name: dockerfile
       - run: cat test.txt
-      - run: echo ${{ vars.AWS_S3_BUCKET }}
+      - run: echo ${{ secrets.AWS_S3_BUCKET }}
       - run: aws --version
-      - run: aws s3 cp test.txt s3://${{ vars.AWS_S3_BUCKET }}/test.txt
+      - run: aws s3 cp test.txt s3://${{ secrets.AWS_S3_BUCKET }}/test.txt
     
