@@ -21,7 +21,7 @@ jobs:
       - name: Run Unit Tests
         run: npm test
       - run: echo "Hello world this is it" > test.txt
-      - run: ping -c 10 -w 5 192.168.43.29
+      - run: ping -c 5 192.168.43.29
       - uses: actions/upload-artifact@v3
         with:
           name: dockerfile
